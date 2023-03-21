@@ -1,0 +1,42 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "image": "/assets/crystal chandaliers/cc1.jpg",
+      "name": "Crystal Chandelier 1",
+      "description": "A proper smart light for your home",
+      "price": 40,
+      "category_id": 1
+    },
+    {
+      "id": 2,
+      "image": "/assets/crystal chandaliers/cc2.jpg",
+      "name": "Crystal Chandelier 2",
+      "description": "A proper outdoor wall light for your home",
+      "price": 100,
+      "category_id": 1
+    },
+    {
+      "id": 3,
+      "image": "assets/crystal chandaliers/cc3.jpg",
+      "name": "Crystal Chandelier 3",
+      "description": "A proper decoration light for your home",
+      "price": 70,
+      "category_id": 1
+    },
+    {
+      "id": 4,
+      "image": "assets/crystal chandaliers/cc4.jpg",
+      "name": "Crystal Chandelier 4",
+      "description": "A proper modern chandeliers light for your home",
+      "price": 4000,
+      "category_id": 1
+    }
+  ],
+  "categories": [
+    {
+      "id": 1,
+      "name": "crystal chandeliers"
+    }
+  ]
+}

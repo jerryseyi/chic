@@ -6,7 +6,11 @@
       <div class="flex flex-wrap items-center justify-items-start">
         <div tabindex="0" class="focus:outline-none mx-2 w-72 xl:mb-0 mb-8" v-for="product in products" :key="product.id">
           <div>
-            <img alt="person capturing an image" src="https://cdn.tuk.dev/assets/templates/classified/Bitmap (1).png" tabindex="0" class="focus:outline-none w-full h-44" />
+            <router-link :to="{name: 'show-product', params: {id: product.id}}">
+              <img alt="person capturing an image"
+                   :src="product.image"
+                   tabindex="0" class="focus:outline-none w-full h-44" />
+            </router-link>
           </div>
           <div class="bg-white">
             <div class="flex items-center justify-between px-4 pt-4">
@@ -45,7 +49,15 @@
 <script>
 export default {
   name: "products-card",
-  props: ['products']
+  props: ['products'],
+
+  methods: {
+    getImage(product) {
+      return product.image;
+    }
+  },
+  computed: {
+  }
 }
 </script>
 
