@@ -35,14 +35,14 @@
 </template>
 
 <script>
-import products from "@/data/products.js";
-import axios from "axios";
+
+import req from "@/services/Request.js";
 
 export default {
   name: "show-product",
   props: ['id'],
   mounted() {
-    axios.get(`http://127.0.0.1:3000/products/${this.id}`)
+    req.get(`products/${this.id}`)
         .then(res => {
           this.product = res.data;
         })

@@ -8,14 +8,20 @@
 <script>
 import ChicHero from "../shared/chic-hero.vue";
 import ProductsCard from "../shared/dashboard/products-card.vue";
-import products from "../data/products.js";
+import req from '@/services/Request';
 
 export default {
   name: "dashboard",
   components: {ProductsCard, ChicHero},
+  created() {
+    req.get('products')
+        .then(res => {
+          this.products = res.data;
+        })
+  },
   data() {
     return {
-      products: products
+      products: ''
     }
   }
 }

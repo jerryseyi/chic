@@ -1,7 +1,9 @@
 <template>
-  <chic-header></chic-header>
-  <RouterView />
-  <chic-footer />
+  <div class="">
+    <chic-header></chic-header>
+    <RouterView />
+    <chic-footer />
+  </div>
 </template>
 <script>
 import ChicHeader from "./shared/chic-header.vue";

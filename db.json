@@ -31,6 +31,22 @@
       "description": "A proper modern chandeliers light for your home",
       "price": 4000,
       "category_id": 1
+    },
+    {
+      "image": "/assets/crystal chandaliers/cc12.jpg",
+      "name": "Crystal chandelier new",
+      "description": "Describing product",
+      "price": "400",
+      "category_id": "1",
+      "id": 5
+    },
+    {
+      "image": "/assets/crystal chandaliers/cc11.jpg",
+      "name": "Another chandelier",
+      "description": "Describing second product",
+      "price": "1000",
+      "category_id": "1",
+      "id": 6
     }
   ],
   "categories": [
