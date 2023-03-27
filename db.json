@@ -9,16 +9,8 @@
       "category_id": 1
     },
     {
-      "id": 2,
-      "image": "/assets/crystal chandaliers/cc2.jpg",
-      "name": "Crystal Chandelier 2",
-      "description": "A proper outdoor wall light for your home",
-      "price": 100,
-      "category_id": 1
-    },
-    {
       "id": 3,
-      "image": "assets/crystal chandaliers/cc3.jpg",
+      "image": "/assets/crystal chandaliers/cc3.jpg",
       "name": "Crystal Chandelier 3",
       "description": "A proper decoration light for your home",
       "price": 70,
@@ -26,7 +18,7 @@
     },
     {
       "id": 4,
-      "image": "assets/crystal chandaliers/cc4.jpg",
+      "image": "/assets/crystal chandaliers/cc4.jpg",
       "name": "Crystal Chandelier 4",
       "description": "A proper modern chandeliers light for your home",
       "price": 4000,
@@ -39,14 +31,6 @@
       "price": "400",
       "category_id": "1",
       "id": 5
-    },
-    {
-      "image": "/assets/crystal chandaliers/cc11.jpg",
-      "name": "Another chandelier",
-      "description": "Describing second product",
-      "price": "1000",
-      "category_id": "1",
-      "id": 6
     }
   ],
   "categories": [

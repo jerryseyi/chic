@@ -1,6 +1,10 @@
 <template>
   <!-- component -->
   <div class="py-6">
+    <div class="w-full flex items-end justify-end">
+      <router-link :to="{name: 'edit-product', params: {id}}" class="bg-purple-700 px-2 py-3 rounded-md text-white text-xs mr-5">Edit</router-link>
+      <a @click.prevent="destroy" class="bg-red-700 px-2 py-3 cursor-pointer rounded-md text-white text-xs mr-5">Delete</a>
+    </div>
     <div class="flex max-w-md bg-white shadow-lg rounded-lg overflow-hidden">
 <!--      <div class="w-1/3 bg-cover" v-bind:style="{ 'background-image': 'url(' + product.image + ')' }">-->
         <img :src="product.image" class="w-1/3 bg-cover" alt="">
@@ -41,19 +45,28 @@ import req from "@/services/Request.js";
 export default {
   name: "show-product",
   props: ['id'],
-  mounted() {
-    req.get(`products/${this.id}`)
-        .then(res => {
-          this.product = res.data;
-        })
-  },
   data() {
     return {
-      product: ''
+      product: this.$store.getters.getProductByID(1)
+    }
+  },
+  mounted() {
+    console.log(this.getProduct(this.id))
+  },
+
+  methods: {
+    destroy() {
+      req.delete(`products/${this.id}`)
+          .then(res => {
+            this.$router.push({name: 'dashboard'});
+          })
     }
   },
 
   computed: {
+    getProduct() {
+      return this.$store.getters.getProductByID(location.pathname.split("/")[2]);
+    }
   }
 }
 </script>

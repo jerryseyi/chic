@@ -17,7 +17,7 @@
                   </svg>
                 </div>
 
-                <input id="email" type="email" v-model="email"
+                <input id="email" type="email" v-model="form.email"
                        name="email" class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="E-Mail Address" />
               </div>
             </div>
@@ -32,7 +32,7 @@
               </span>
                 </div>
 
-                <input id="password" type="password" name="password" v-model="password"
+                <input id="password" type="password" name="password" v-model="form.password"
                        class="text-sm sm:text-base placeholder-gray-500 pl-10 pr-4 rounded-lg border border-gray-400 w-full py-2 focus:outline-none focus:border-blue-400" placeholder="Password" />
               </div>
             </div>
@@ -71,25 +71,27 @@
 </template>
 
 <script>
+import req from "@/services/Request.js";
+
 export default {
   name: "Login",
   data() {
     return {
-      email: '',
-      password: ''
+      form: {
+        email: '',
+        password: ''
+      }
     }
   },
 
   methods: {
     submit() {
-      const form = {
-        email: this.email,
-        authenticated: true
-      }
-
-      localStorage.setItem('credentials', JSON.stringify(form))
-      this.$router.push({name: 'dashboard'})
-
+      req.post('register', this.form)
+          .then(res => {
+             console.log(res.data);
+          }).catch(err => {
+         console.log(err.response.data.errors);
+      });
     }
   }
 }

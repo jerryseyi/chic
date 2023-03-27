@@ -13,15 +13,9 @@ import req from '@/services/Request';
 export default {
   name: "dashboard",
   components: {ProductsCard, ChicHero},
-  created() {
-    req.get('products')
-        .then(res => {
-          this.products = res.data;
-        })
-  },
   data() {
     return {
-      products: ''
+      products: this.$store.state.products
     }
   }
 }

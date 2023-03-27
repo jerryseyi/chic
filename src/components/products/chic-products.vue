@@ -7,14 +7,20 @@
 
 <script>
 import ProductsCard from "../../shared/dashboard/products-card.vue";
-import products from "../../data/products.js";
+import req from "@/services/Request.js";
 
 export default {
   name: "chic-products",
   components: {ProductsCard},
+  created() {
+    req.get('products')
+        .then(res => {
+          this.products = res.data;
+        })
+  },
   data() {
     return {
-      products: products
+      products: null
     }
   },
   computed: {
