@@ -1,9 +1,11 @@
 import {createStore} from "vuex";
+import req from "@/services/Request.js";
 
 const store = createStore({
     state: {
-        user: 'John Doe',
-        authenticated: true,
+        user: null,
+        authenticated: false,
+        token: null,
         products: [
             {
                 "id": 1,
@@ -45,13 +47,30 @@ const store = createStore({
             }
         ]
     },
-    mutations: {},
+    mutations: {
+        SET_USER(state, data) {
+            state.user = data.user;
+            state.token = data.token;
+            state.authenticated = true;
+        }
+    },
     getters: {
         getProductByID: state => id => {
             return state.products.find(product => product.id === id);
+        },
+        getProducts: state => {
+            return state.products;
         }
     },
-    actions: {}
+    actions: {
+        register({commit}, value) {
+            return req.post('register', value)
+                .then(({data}) => {
+                    console.log(data);
+                    commit('SET_USER', data);
+                })
+        }
+    }
 });
 
 export default store;

@@ -70,7 +70,7 @@ export default {
   },
   computed: {
     username() {
-      return this.$store.state.user;
+      return this.$store.state.user?.name;
     },
     authenticated() {
       return this.$store.state.authenticated;
