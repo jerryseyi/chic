@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="bg-gray-600 flex items-center justify-center w-full">
         <form action="" @submit.prevent="register"
-              class="bg-gray-600 max-w-7xl flex flex-col items-center justify-center px-28 py-14">
+              class="flex-col items-center justify-center w-full px-28 py-14">
             <h3 class="text-sm text-white font-bold mb-4">Register</h3>
             <div class="flex flex-col space-y-2 items-start w-full md:w-2/3">
                 <label for="" class="text-xs text-white">Name</label>
@@ -27,7 +27,10 @@
                        class="px-2 py-2 text-xs w-5/6 md:w-2/3">
             </div>
             <div class="flex flex-col space-y-2 items-start w-full md:w-2/3 mt-3">
-                <input type="submit" value="register" class="px-2 py-2 font-mono bg-white cursor-pointer text-gray-700">
+                <input type="submit" value="register"
+                       :disabled="disable"
+                       :class="['px-2 py-2 font-mono bg-white cursor-pointer text-gray-700', disable ? 'cursor-not-allowed' : '']"
+                >
             </div>
         </form>
     </div>
@@ -46,14 +49,17 @@ export default {
                 password: null,
                 password_confirmation: null,
             },
-            errors: null
+            errors: null,
+            disable: false,
         }
     },
 
     methods: {
         register() {
+            this.disable = true;
             this.$store.dispatch('register', this.form)
                 .then(() => {
+                    this.disable = false;
                     this.$router.push({name: 'dashboard'});
                 })
                 .catch(err => {

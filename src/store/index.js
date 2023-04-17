@@ -3,9 +3,9 @@ import req from "@/services/Request.js";
 
 const store = createStore({
     state: {
-        user: null,
-        authenticated: false,
-        token: null,
+        user: {name: 'Lateefat'},
+        authenticated: true,
+        token: '15|L42XwBDiPwJ0VN1jjJCPjJWEBHFSIwHfYseH4DiR',
         products: [
             {
                 "id": 1,
@@ -49,9 +49,16 @@ const store = createStore({
     },
     mutations: {
         SET_USER(state, data) {
+            console.log(data.token);
             state.user = data.user;
             state.token = data.token;
             state.authenticated = true;
+        },
+
+        UNSET_USER(state) {
+            state.user = null;
+            state.token = null;
+            state.authenticated = false;
         }
     },
     getters: {
@@ -68,6 +75,20 @@ const store = createStore({
                 .then(({data}) => {
                     console.log(data);
                     commit('SET_USER', data);
+                })
+        },
+
+        login({commit}, value) {
+            return req.post('login', value)
+                .then(({data}) => {
+                    commit('SET_USER', data);
+                })
+        },
+
+        logout({commit}) {
+            return req.post('logout')
+                .then(() => {
+                    commit('UNSET_USER');
                 })
         }
     }

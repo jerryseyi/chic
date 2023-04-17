@@ -15,7 +15,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
               <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
             </svg>
-            <span class="text-sm font-medium">Categories</span>
+            <router-link to="/categories/create" class="text-sm font-medium">Categories</router-link>
           </div>
 
           <input type="text" class="w-full rounded-md border border-[#DDE2E4] px-3 py-2 text-sm" />
@@ -42,7 +42,7 @@
 
           <div class="flex" v-if="! authenticated">
             <div class="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-gray-100">
-              <span class="text-xs font-medium">Register</span>
+              <router-link to="/register" class="text-xs font-medium">Register</router-link>
             </div>
             <div class="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-gray-100">
               <router-link to="/login" class="text-xs font-medium">Sign in</router-link>
@@ -51,6 +51,9 @@
 
           <div class="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-gray-100" v-if="authenticated">
             <p class="text-xs font-light">{{ username }}</p>
+          </div>
+          <div class="ml-2 flex cursor-pointer items-center gap-x-1 rounded-md border py-2 px-4 hover:bg-gray-100" v-if="authenticated">
+            <a @click.prevent="logout" class="text-xs font-light">Logout</a>
           </div>
         </div>
       </div>
@@ -68,6 +71,13 @@ export default {
     return {
     }
   },
+
+    methods: {
+      logout() {
+          this.$store.dispatch('logout')
+              .then(() => this.$router.push({name: 'Login'}));
+      }
+    },
   computed: {
     username() {
       return this.$store.state.user?.name;
